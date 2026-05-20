@@ -1,0 +1,10 @@
+import express from "express";
+import Auth from "../middleware/checkToken.js";
+import Order from "../app/controllers/order.controller.js";
+const router = express.Router();
+router.post("/booking/discord/create", Order.createOrder);
+router.post("/booking/get-all/history", Order.readOrder);
+router.get("/booking/get-all", Auth.verifyAdmin, Order.readAllOrder);
+router.delete("/booking/delete", Auth.verifyAdmin, Order.deleteOrderById);
+router.put("/booking/update", Auth.verifyAdmin, Order.updateOrder);
+export default router;
