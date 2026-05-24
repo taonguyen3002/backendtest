@@ -114,7 +114,7 @@ const configMap = {
     numberWord: "2500-3500",
   },
   "blog.taxisieure.com": {
-    DATABASE_URI: process.env.MONGODB_URI_TAXISIEURE,
+    DATABASE_URI: process.env.MONGODB_URI_BLOGSTAXISIEURE,
     DISCORD_WEBHOOK: process.env.DISCORD_WEBHOOK_URL_TAXISIEURE,
     JWT_SECRET: process.env.JWT_SECRET_TAXISIEURE,
     JWT_SECRET_RERESH: process.env.JWT_SECRET_RERESH_TAXISIEURE,
