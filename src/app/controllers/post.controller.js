@@ -62,7 +62,7 @@ class PostController {
     try {
       const { limit } = req.query;
 
-      let query = Post.find({}).select("title slug createdAt isIndexed").sort({ createdAt: -1 });
+      let query = Post.find({}).select("title slug createdAt updatedAt isIndexed").sort({ createdAt: -1 });
 
       if (limit !== undefined) {
         const parsedLimit = parseInt(limit, 10);
@@ -239,6 +239,7 @@ class PostController {
   deletePost = async (req, res) => {
     const Post = getPostModel(req.db);
     const id = req.params.id;
+    const config = req.app.locals.config;
     if (!id) {
       return res.status(400).json({ message: "cant receive id blogs" });
     }
@@ -246,7 +247,6 @@ class PostController {
       await Post.findByIdAndDelete(id);
       try {
         await fetch(`${config.DOMAIN}/api/revalidate/post/getall?secret=${process.env.REVALIDATE_SECRET}`);
-        console.log("Revalidate success for slug:", slug);
       } catch (err) {
         console.error("Revalidate error:", err);
       }
@@ -284,7 +284,6 @@ class PostController {
 
       try {
         await fetch(`${config.DOMAIN}/api/revalidate/post?slug=${slug}&secret=${process.env.REVALIDATE_SECRET}`);
-        console.log("Revalidate success for slug:", slug);
       } catch (err) {
         console.error("Revalidate error:", err);
       }
@@ -419,7 +418,7 @@ class PostController {
       const updatedLikes = await Post.findOneAndUpdate(
         { _id },
         alreadyLiked ? { $pull: { likes: username } } : { $addToSet: { likes: username } },
-        { new: true }
+        { new: true },
       );
       return res.json({
         message: alreadyLiked ? "Đã bỏ thích" : "Đã thích bài viết",
@@ -493,7 +492,7 @@ class PostController {
             [field]: { $regex: find, $options: "i" },
           })),
         },
-        [{ $set: update }]
+        [{ $set: update }],
       );
 
       res.status(200).json({
