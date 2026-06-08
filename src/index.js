@@ -81,6 +81,10 @@ app.use(
         "https://hotrodatxesieure.com",
         "https://www.hotrodatxesieure.com",
 
+        // datxemaytaxidian.com
+        "https://datxemaytaxidian.com",
+        "https://www.datxemaytaxidian.com",
+
         // tongdatdatxe24gio.top
         "https://tongdatdatxe24gio.top",
         "https://www.tongdatdatxe24gio.top",

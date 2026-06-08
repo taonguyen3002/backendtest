@@ -155,6 +155,27 @@ const configMap = {
     `,
     numberWord: "2500-3500",
   },
+  "datxemaytaxidian.com": {
+    DATABASE_URI: process.env.MONGODB_URI_DATXEMAYTAXIDIAN,
+    DISCORD_WEBHOOK: process.env.DISCORD_WEBHOOK_URL_DATXEMAYTAXIDIAN,
+    JWT_SECRET: process.env.JWT_SECRET_DATXEMAYTAXIDIAN,
+    JWT_SECRET_RERESH: process.env.JWT_SECRET_RERESH_DATXEMAYTAXIDIAN,
+    HOST: process.env.HOST,
+    EMAIL_USER: process.env.EMAIL_USER_DATXEMAYTAXIDIAN,
+    EMAIL_PASS: process.env.EMAIL_PASS_DATXEMAYTAXIDIAN,
+    DOMAIN: "https://datxemaytaxidian.com",
+    PROMPT: `Nội dung phải CHUYÊN SÂU:
+    - Ngành viết về dịch vụ vận tải hành khách như grab , bee, vinasun , xanh sm ,...
+    - dùng thông tin về địa phương như các huyện , tỉnh , phường , xã , thành phố và các địa điểm nổi tiếng , các danh lam thắng cản>
+    - Có thể sử dụng ví dụ thực tế, số liệu, và nghiên cứu liên quan.
+    - Một số thông tin su dung trong content:
+      + Số điện thoại 0933551965
+      + Website: https://datxemaytaxidian.com
+      + Có thể đặt xe qua biểu mẫu trong website ( nhập điểm đón , điểm đến, loại xe , số điện thoại )
+   - nếu có thể hãy sử dụng bảng giá cước tham khảo
+    `,
+    numberWord: "2500-3500",
+  },
   "tongdatdatxe24gio.top": {
     DATABASE_URI: process.env.MONGODB_URI_TONGDAIDATXESIEURE,
     DISCORD_WEBHOOK: process.env.DISCORD_WEBHOOK_URL_TONGDAIDATXESIEURE,

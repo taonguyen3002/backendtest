@@ -22,7 +22,7 @@ export const crawlFromSitemapController = async (req, res) => {
     return res.status(400).json({ success: false, message: "Thiếu URL sitemap" });
   }
 
-  const db = req.db; // nếu bạn dùng middleware attach db
+  const db = req.db;
   const Post = getPostModel(db);
   const Setting = getSettingModel(db);
   const Image = getImageModel(db);
@@ -133,8 +133,8 @@ export const crawlFromSitemapController = async (req, res) => {
           } catch (err) {
             console.error("❌ Lỗi khi crawl:", url, err.message);
           }
-        })
-      )
+        }),
+      ),
     );
 
     return res.status(200).json({
